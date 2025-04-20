@@ -1,88 +1,39 @@
-// Simulated weather data (hardcoded for demonstration purposes)
-const weatherData = {
-    "New York": {
-        temperature: 22,
-        humidity: 60,
-        description: "Sunny",
-    },
-    "London": {
-        temperature: 16,
-        humidity: 75,
-        description: "Cloudy",
-    },
-    "Tamilnadu": {
-        temperature: 22,
-        humidity: 60,
-        description: "Sunny",
-    },
-    "India": {
-        temperature: 42,
-        humidity: 50,
-        description: "Sunny",
-    },
-    "Delhi": {
-        temperature: 32,
-        humidity: 68,
-        description: "Sunny",
-    },
-    "Tokyo": {
-        temperature: 18,
-        humidity: 80,
-        description: "Rainy",
-    },
-    "Paris": {
-        temperature: 20,
-        humidity: 65,
-        description: "Clear",
-    },
-    "Sydney": {
-        temperature: 25,
-        humidity: 50,
-        description: "Windy",
-    }
-};
-
-// Function to get weather data from the hardcoded list
-function getWeather() {
-    const city = document.getElementById('cityInput').value.trim();
-
-    if (city === "") {
-        alert("Please enter a city name");
-        return;
-    }
-
-    // Check if the city exists in the simulated data
-    if (weatherData[city]) {
-        displayWeather(weatherData[city], city);
-    } else {
-        showError("City not found! Please try again.");
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #74ebd5, #9face6);
+  text-align: center;
+  padding-top: 100px;
+  color: #333;
 }
 
-// Function to display weather data
-function displayWeather(data, city) {
-    document.getElementById('error-message').classList.add('hidden');
-    document.getElementById('weather-info').classList.remove('hidden');
-
-    document.getElementById('city-name').textContent = ${city};
-    document.getElementById('temperature').textContent = Temperature: ${data.temperature}°C;
-    document.getElementById('humidity').textContent = Humidity: ${data.humidity}%;
-    document.getElementById('weather-description').textContent = Weather: ${data.description};
+.weather-app {
+  background: white;
+  padding: 30px;
+  margin: auto;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
-// Function to show error messages
-function showError(message) {
-    document.getElementById('error-message').textContent = message;
-    document.getElementById('error-message').classList.remove('hidden');
-    document.getElementById('weather-info').classList.add('hidden');
+input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10px;
 }
 
-// Adding event listener to the button
-document.getElementById('searchButton').addEventListener('click', getWeather);
+button {
+  padding: 10px 20px;
+  background-color: #4b79a1;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
-// Optional: Allow pressing Enter key to trigger search
-document.getElementById('cityInput').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        getWeather();
-    }
-});
+button:hover {
+  background-color: #283e51;
+}
+
+#weatherResult {
+  margin-top: 20px;
+}
