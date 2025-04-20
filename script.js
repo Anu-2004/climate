@@ -1,39 +1,43 @@
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #74ebd5, #9face6);
-  text-align: center;
-  padding-top: 100px;
-  color: #333;
-}
+const climateData = {
+  london: {
+    climate: "Temperate Oceanic",
+    temp: "10-20°C",
+    rainfall: "Moderate rainfall year-round"
+  },
+  cairo: {
+    climate: "Hot Desert",
+    temp: "20-40°C",
+    rainfall: "Very low rainfall"
+  },
+  mumbai: {
+    climate: "Tropical Wet and Dry",
+    temp: "25-35°C",
+    rainfall: "Heavy monsoon rains (Jun–Sep)"
+  },
+  newyork: {
+    climate: "Humid Subtropical",
+    temp: "-5 to 30°C",
+    rainfall: "Moderate rainfall and snowfall"
+  },
+  tokyo: {
+    climate: "Humid Subtropical",
+    temp: "5-30°C",
+    rainfall: "Rainy summers, mild winters"
+  }
+};
 
-.weather-app {
-  background: white;
-  padding: 30px;
-  margin: auto;
-  width: 300px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-}
+function showClimate() {
+  const city = document.getElementById("city").value;
+  const info = climateData[city];
 
-input {
-  padding: 10px;
-  width: 80%;
-  margin-bottom: 10px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #4b79a1;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-button:hover {
-  background-color: #283e51;
-}
-
-#weatherResult {
-  margin-top: 20px;
+  if (info) {
+    document.getElementById("climate-result").innerHTML = `
+      <h2>${city.charAt(0).toUpperCase() + city.slice(1)}</h2>
+      <p><strong>Climate Type:</strong> ${info.climate}</p>
+      <p><strong>Typical Temperature:</strong> ${info.temp}</p>
+      <p><strong>Rainfall:</strong> ${info.rainfall}</p>
+    `;
+  } else {
+    document.getElementById("climate-result").innerHTML = "";
+  }
 }
